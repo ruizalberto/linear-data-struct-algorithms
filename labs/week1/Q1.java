@@ -5,8 +5,7 @@ public class Q1 {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = input.nextInt();
-        int power = findingDigitLength(number);
-        printSolution(power, number);
+        printSolution(findingDigitLength(number), number);
 
         input.close();
     }
