@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class Q2 {
     public static void main(String[] args) {
+        int numbers[] = enteringNumbers();
+        printingAsterisks(numbers);
+    }
+
+    private static int[] enteringNumbers() {
         Scanner input = new Scanner (System.in);
         
         int[] number = {0, 0, 0, 0, 0};
@@ -13,13 +18,15 @@ public class Q2 {
             }
             i++;
         }
-    
+        input.close();
+        return number;
+    }
+
+    private static void printingAsterisks(int[] number) {
         for (int j = 0; j < number.length; j++)
         {
             String asterik = "*";
             System.out.println(asterik.repeat(number[j])); 
         }
-                    
-        input.close();
     }
 }
