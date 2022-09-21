@@ -23,9 +23,9 @@ public class Q2 {
     }
 
     private static void printingAsterisks(int[] number) {
+        String asterik = "*";
         for (int j = 0; j < number.length; j++)
         {
-            String asterik = "*";
             System.out.println(asterik.repeat(number[j])); 
         }
     }
