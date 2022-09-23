@@ -1,5 +1,5 @@
 public class Q4 {
-    public class Invoice {
+    class Invoice {
         String number;
         String description;
         int quantity;
@@ -45,9 +45,27 @@ public class Q4 {
         }
 
         public double getInvoiceAmount() {
-            double amount = 0.0;
-            
+            if (getQuantity()<0){ setQuantity(0); }
+            if (getPrice()<0){ setPrice(0.0); }
+            double amount = getPrice()*getQuantity();
             return amount;
         }
+    }
+
+    public static void main(String[] args) {
+        Q4 q = new Q4();
+        Q4.Invoice invoiceTest = q.new Invoice();
+
+        invoiceTest.setDescription("This is a descrip.");
+        invoiceTest.setPrice(5.2);
+        invoiceTest.setQuantity(10);
+        System.out.println(invoiceTest.getInvoiceAmount());
+
+        invoiceTest.setQuantity(-5);
+        System.out.println(invoiceTest.getInvoiceAmount());
+
+        invoiceTest.setQuantity(10);
+        invoiceTest.setPrice(-2.3);
+        System.out.println(invoiceTest.getInvoiceAmount());
     }
 }
