@@ -1,0 +1,7 @@
+1
+    a. False (it is not required)
+    b. False (because flow falls out of the switch statement)
+    c. False (the && condition means that both statements must be true)
+    d. True
+    e. True
+    f. 
