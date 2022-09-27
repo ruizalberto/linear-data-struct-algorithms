@@ -72,22 +72,46 @@ class PrintBook extends Book {
 
 }
 
-class Test {
-    public static void main(String[] args) {
-        Book book = new Book();
-        book.setAuthor("alberto");
-        book.setTitle("Title Test");
-        book.setYearOfPublication("2022");
+class AudioBook extends Book {
+    String sizeBook;
+    String playLength;
+    String playbackName;
 
-        System.out.println(book.toString());
+    public AudioBook(){
+        super();
+        this.sizeBook = "";
+        this.playLength = "";
+        this.playbackName = "";
+    }
 
-        PrintBook printBook = new PrintBook();
-        printBook.setPublisher("Hiii");
-        printBook.setISBN("sdfs");
-        printBook.setAuthor("alberto");
-        printBook.setTitle("alberto Title");
-        printBook.setYearOfPublication("2022");
+    public String getPlayLength() {
+        return playLength;
+    }
 
-        System.out.println(book.toString());
+    public String getPlaybackName() {
+        return playbackName;
+    }
+    
+    public String getSizeBook() {
+        return sizeBook;
+    }
+
+    public void setPlayLength(String playLength) {
+        this.playLength = playLength;
+    }
+
+    public void setPlaybackName(String playbackName) {
+        this.playbackName = playbackName;
+    }
+
+    public void setSizeBook(String sizeBook) {
+        this.sizeBook = sizeBook;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " with a size of " + getSizeBook() + 
+        ", a play length of " + getPlayLength() +
+        " and a playback artist's name of " + getPlaybackName();
     }
 }
