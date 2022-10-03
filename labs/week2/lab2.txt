@@ -4,4 +4,4 @@
     c. False (the && condition means that both statements must be true)
     d. True
     e. True
-    f. 
+    f. False
