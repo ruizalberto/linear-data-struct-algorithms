@@ -1,3 +1,5 @@
+import javax.swing.text.Position;
+
 /**
  * A class that implements a list of objects using a linked list. 
  * Duplicated entries are allowed.
@@ -40,6 +42,8 @@
            */
            public Node(T data, Node next)
            {  //to-complete
+            this.data = data;
+            this.next = next;
            }
 
           /**
@@ -48,6 +52,7 @@
            */
            public T getData()
            {   //to-complete
+            return this.data;
            }
 
           /**
@@ -56,6 +61,7 @@
            */
            public Node getNextNode()
            {  //to-complete
+            return this.next;
            }
 
           /**
@@ -64,6 +70,7 @@
            */
            public void setData(T data)
            {  //to-complete
+            this.data = data;
            }   
           
           /**
@@ -72,6 +79,7 @@
            */
            public void setNextNode(Node nextNode)
            {  //to-complete
+            this.next = nextNode;
            }
      }
 /* ============================================================================
@@ -93,6 +101,8 @@
       */
       public LinkedList()
       {  //to-complete
+        this.head = null;
+        this.numEntries = 0;
       }
 /* =============================================================================
                        INSTANCE METHODS
@@ -105,6 +115,7 @@
      */
      public int getLength()
      { //to-complete
+      return this.numEntries;
      }
 /* ---------------------- Other Methods --------------------------------------*/
     /**
@@ -116,6 +127,18 @@
      */
      public void add(T newEntry)
      { //to-complete
+      Node newNode = new Node(newEntry);
+
+      if (this.head == null) {
+        this.head = newNode;
+      }
+      else {
+        Node last = this.head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = newNode;
+      }
      }
     
     /**
@@ -133,6 +156,19 @@
      public void add(int newPosition, T newEntry)
      {  if (newPosition >= 1 && newPosition <= numEntries + 1)
         { //to-complete
+          if (newPosition == 1) {
+            Node newNode = new Node(newEntry);
+            newNode.next = head;
+            head = newNode;
+          } else {
+            while (newPosition-- != 0){
+              if (newPosition == 1){
+                Node newNode = new Node(newEntry);
+                newNode.next = head.next;
+                head.next = newNode;
+              }
+            }
+          }
         }  
         else
            throw new IndexOutOfBoundsException("Illegal position given to add operation");
@@ -153,6 +189,13 @@
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        {  if (!isEmpty())
           { //to-complete
+            Node temp = head;
+            for (int i = 0; i < givenPosition - 1; i++){
+              temp = temp.next;
+            }
+            Node nextNode = temp.next.next;
+            temp.next = nextNode;
+            return temp.getData();
           }
           else
             throw new IndexOutOfBoundsException("Illegal position given to remove operation");
@@ -212,6 +255,10 @@
      */
      public boolean isEmpty()
      {  //to-complete
+      if (head == null){
+        return true;
+      }
+      return false;
      }
 
     /**
