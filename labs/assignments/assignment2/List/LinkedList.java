@@ -28,6 +28,8 @@
            */
            public Node(T data)
            {  //to-complete
+            this.data = data;
+            this.next = null;
            }
       
           /**
