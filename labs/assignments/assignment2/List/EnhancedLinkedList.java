@@ -126,15 +126,15 @@
      */
      public void add(T newEntry)
      {  //to-complete
-      Node newNode = new Node(newEntry);
-
-      if (this.head == null) {
-        this.head = newNode;
-      }
-      else {
-        tail = newNode;
-        tail.next = head;
-      }
+      Node newNode = new Node(newEntry);  
+      if (head == null) {  
+          head = newNode;  
+          tail = newNode;  
+      }  
+      else {  
+          tail.next = newNode;  
+          tail = newNode;  
+      }  
       numEntries++;
      }
     
@@ -185,12 +185,22 @@
      */
      public T remove(int givenPosition)    
      { if (givenPosition >= 1 && givenPosition <= numEntries)
-       { //tocomplete
+      { if (!isEmpty())
+        { //to-complete
+          Node temp = head;
+          for (int i = 0; i < givenPosition - 1; i++){
+            temp = temp.next;
           }
-          else
-            throw new IndexOutOfBoundsException("Illegal position given to remove operation");
-       }
-     }
+          Node nextNode = temp.next.next;
+          temp.next = nextNode;
+          numEntries--;
+          return temp.getData();
+        }
+      }
+        else
+          throw new IndexOutOfBoundsException("Illegal position given to remove operation");
+      return null;
+    }
 
     /**
      * Replaces the entry at a given position in this list.
@@ -205,6 +215,12 @@
      public T replace(int givenPosition, T newEntry)
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        { //to-complete
+        Node temp = head;
+        for (int i = 0; i < givenPosition; i++){
+          temp = temp.next;
+        }
+        temp.setData(newEntry);
+        return temp.getData();
        }
        else
          throw new IndexOutOfBoundsException("Illegal position given to replace operation"); 
@@ -222,10 +238,14 @@
      public T getEntry(int givenPosition)
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        {  //to-complete
+        Node temp = head;
+        for (int i = 1; i <= givenPosition-1; i++){
+          temp = temp.next;
+        }
+        return temp.getData();
        }
        else
           throw new IndexOutOfBoundsException("Illegal position given to getEntry operation");
-       return null;
      }
 
     /**
@@ -236,6 +256,14 @@
      */
      public boolean contains(T anEntry)
      { //to-complete
+      Node temp = head;
+      for (int i = 0; i < numEntries; i++){
+        temp = temp.next;
+        if (temp.getData().equals(anEntry)){
+          return true;
+        }
+      }
+      return false;
      }
 
     /**
@@ -244,6 +272,10 @@
      */
      public boolean isEmpty()
      { //to-complete
+      if (head == null || numEntries<1){
+        return true;
+      }
+      return false;
      }
 
     /**
@@ -270,6 +302,11 @@
      */
      public void clear()
      {  //to-complete
+      head.next = null;
+      head = null;
+      tail.next = null;
+      tail = null;
+      numEntries = 0;
      }
 /* =============================================================================
                        HELPER METHODS
