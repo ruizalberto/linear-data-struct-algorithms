@@ -133,11 +133,10 @@ import javax.swing.text.Position;
         this.head = newNode;
       }
       else {
-        Node last = this.head;
-        while (last.next != null) {
-            last = last.next;
+        while (head.next != null) {
+            head = head.next;
         }
-        last.next = newNode;
+        head.next = newNode;
       }
       numEntries++;
      }
