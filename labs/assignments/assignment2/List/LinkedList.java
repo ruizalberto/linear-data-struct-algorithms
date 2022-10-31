@@ -244,7 +244,7 @@ import javax.swing.text.Position;
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        {  //to-complete
         Node temp = head;
-        for (int i = 0; i < givenPosition; i++){
+        for (int i = 1; i < givenPosition - 1; i++){
           temp = temp.next;
         }
         return temp.getData();
@@ -261,6 +261,14 @@ import javax.swing.text.Position;
      */
      public boolean contains(T anEntry)
      {//to-complete
+      Node temp = head;
+      for (int i = 0; i < numEntries; i++){
+        temp = temp.next;
+        if (temp.getData().equals(anEntry)){
+          return true;
+        }
+      }
+      return false;
      }
 
     /**
@@ -299,6 +307,9 @@ import javax.swing.text.Position;
      */
      public void clear()
      { //to-complete
+      head.next = null;
+      head = null;
+      numEntries = 0;
      }
 /* =============================================================================
                        HELPER METHODS
