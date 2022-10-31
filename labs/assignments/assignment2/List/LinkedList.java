@@ -133,10 +133,11 @@ import javax.swing.text.Position;
         this.head = newNode;
       }
       else {
-        while (head.next != null) {
-            head = head.next;
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
         }
-        head.next = newNode;
+        last.next = newNode;
       }
       numEntries++;
      }
@@ -243,7 +244,7 @@ import javax.swing.text.Position;
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        {  //to-complete
         Node temp = head;
-        for (int i = 1; i < givenPosition - 1; i++){
+        for (int i = 1; i <= givenPosition-1; i++){
           temp = temp.next;
         }
         return temp.getData();
