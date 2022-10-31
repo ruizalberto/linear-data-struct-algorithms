@@ -139,6 +139,7 @@ import javax.swing.text.Position;
         }
         last.next = newNode;
       }
+      numEntries++;
      }
     
     /**
@@ -169,6 +170,7 @@ import javax.swing.text.Position;
               }
             }
           }
+          numEntries++;
         }  
         else
            throw new IndexOutOfBoundsException("Illegal position given to add operation");
@@ -195,11 +197,13 @@ import javax.swing.text.Position;
             }
             Node nextNode = temp.next.next;
             temp.next = nextNode;
+            numEntries--;
             return temp.getData();
           }
           else
             throw new IndexOutOfBoundsException("Illegal position given to remove operation");
        }
+       return null;
      }
 
     /**
@@ -213,13 +217,18 @@ import javax.swing.text.Position;
      * givenPosition > getLength()
      */
      public T replace(int givenPosition, T newEntry)
-     { if (givenPosition >= 1 && givenPosition <= numEntries)
-       {  //to-complete
+     { if (givenPosition >= 1 && givenPosition <= numEntries) 
+      {  //to-complete
+          Node temp = head;
+          for (int i = 0; i < givenPosition; i++){
+            temp = temp.next;
+          }
+          temp.setData(newEntry);
+          return temp.getData();
        }
-       else
-         throw new IndexOutOfBoundsException("Illegal position given to replace operation"); 
-
-       return null;
+        else {
+          throw new IndexOutOfBoundsException("Illegal position given to replace operation"); 
+       }
      }
     
     /**
@@ -234,6 +243,11 @@ import javax.swing.text.Position;
      public T getEntry(int givenPosition)
      { if (givenPosition >= 1 && givenPosition <= numEntries)
        {  //to-complete
+        Node temp = head;
+        for (int i = 0; i < givenPosition; i++){
+          temp = temp.next;
+        }
+        return temp.getData();
        }
        else
           throw new IndexOutOfBoundsException("Illegal position given to getEntry operation");
@@ -255,7 +269,7 @@ import javax.swing.text.Position;
      */
      public boolean isEmpty()
      {  //to-complete
-      if (head == null){
+      if (head == null || numEntries<1){
         return true;
       }
       return false;
