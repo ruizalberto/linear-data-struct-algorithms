@@ -115,9 +115,7 @@ import java.util.NoSuchElementException;
         throw new NoSuchElementException("Stack is empty, cannot pop");
       else {
         //to-complete
-        final T element = (T)getStack().get(getStack().size()-1);
-        getStack().remove(size()-1);
-        return element;
+        return getStack().remove(size()-1);
       }
    }
   
