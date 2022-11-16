@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
 */
     //An array of stack entries
     private ArrayList<T> stack;
+    private int capacity;
 
     //default capacity
     private static final int DEFAULT_CAPACITY = 50;
@@ -29,6 +30,8 @@ import java.util.NoSuchElementException;
   */
   public ArrayDynamicStack()
   {  //to-complete
+    this.stack = new ArrayList<>();
+    this.capacity = DEFAULT_CAPACITY;
   }
 
   /**
@@ -37,6 +40,8 @@ import java.util.NoSuchElementException;
    */
    public ArrayDynamicStack(int initCapacity)
    {  //to-complete
+    this.stack = new ArrayList<>();
+    this.capacity = initCapacity;
    }
 
 /* =============================================================================
@@ -50,6 +55,7 @@ import java.util.NoSuchElementException;
     */
     public ArrayList<T> getStack()
     {   //to-complete
+      return this.stack;
     }
 
 /* -------------------- Setters ---------------------------------------------*/
@@ -59,6 +65,7 @@ import java.util.NoSuchElementException;
     */
     public void setStack(ArrayList<T> stack)
     {  //to-complete
+      this.stack = stack;
     }    
 /* ------------------- Other methods -----------------------------------------*/
   
@@ -68,6 +75,10 @@ import java.util.NoSuchElementException;
    */
    public boolean isEmpty()
    { //to-complete
+    if (getStack().size()==0){
+      return true;
+    }
+    return false;
    }
 
   
@@ -77,6 +88,8 @@ import java.util.NoSuchElementException;
    */
    public int size()
    {  //to-complete
+    
+    return getStack().size();
    } 
   
   /**
@@ -89,6 +102,7 @@ import java.util.NoSuchElementException;
          throw new NoSuchElementException("Stack is empty, no peek element");
       else
           //to-complete
+          return getStack().get(size()-1);
       
    } 
   
@@ -98,10 +112,16 @@ import java.util.NoSuchElementException;
    * @throws NoSuchElementException if the stack is empty before the operation
    */
    public T pop()
-   {  if (isEmpty())
+   {  
+      if (isEmpty())
         throw new NoSuchElementException("Stack is empty, cannot pop");
-      else
+      else{
         //to-complete
+        @SuppressWarnings("unchecked")
+        final T element = (T)getStack().get(getStack().size()-1);
+        getStack().remove(size()-1);
+        return element;
+      }
    }
   
   /**
@@ -110,6 +130,7 @@ import java.util.NoSuchElementException;
     */
     public void push(T newEntry)
     { //to-complete
+      getStack().add(getStack().size(), newEntry);
     } 
   
   /**
@@ -121,6 +142,7 @@ import java.util.NoSuchElementException;
          throw new NoSuchElementException("Cannot clear an empty stack");
       else
          //to-complete
+         this.stack = new ArrayList<>();
    }
 
   /**
@@ -128,5 +150,15 @@ import java.util.NoSuchElementException;
    */
    public void display()
    {  //to-complete
-   } 
+    for (T element: getStack()){
+      System.out.println(element.toString());
+      element.toString();
+    }
+   }
+
+  @Override
+  public boolean isFull() {
+    // TODO Auto-generated method stub
+    return false;
+  } 
  }
