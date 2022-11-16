@@ -115,7 +115,6 @@ import java.util.NoSuchElementException;
         throw new NoSuchElementException("Stack is empty, cannot pop");
       else {
         //to-complete
-        @SuppressWarnings("unchecked")
         final T element = (T)getStack().get(getStack().size()-1);
         getStack().remove(size()-1);
         return element;
