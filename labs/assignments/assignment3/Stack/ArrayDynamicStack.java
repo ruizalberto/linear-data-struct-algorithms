@@ -88,7 +88,6 @@ import java.util.NoSuchElementException;
    */
    public int size()
    {  //to-complete
-    
     return getStack().size();
    } 
   
@@ -103,7 +102,6 @@ import java.util.NoSuchElementException;
       else
           //to-complete
           return getStack().get(size()-1);
-      
    } 
   
   /**
@@ -115,7 +113,7 @@ import java.util.NoSuchElementException;
    {  
       if (isEmpty())
         throw new NoSuchElementException("Stack is empty, cannot pop");
-      else{
+      else {
         //to-complete
         @SuppressWarnings("unchecked")
         final T element = (T)getStack().get(getStack().size()-1);
@@ -152,7 +150,6 @@ import java.util.NoSuchElementException;
    {  //to-complete
     for (T element: getStack()){
       System.out.println(element.toString());
-      element.toString();
     }
    }
 
