@@ -86,6 +86,8 @@ import java.util.EmptyStackException;
     */
     public LinkedStack()
     {  //to-complete
+      this.top = null;
+      this.numNodes = 0;
     }
 /* =============================================================================
                      INSTANCE METHODS
@@ -98,6 +100,11 @@ import java.util.EmptyStackException;
    */
    public int size()
    {  //to-complete
+    int counter = 0;
+    while (this.top.next != null){
+      counter++;
+    }
+    return counter;
    } 
    
 /* ------------------- Other methods -----------------------------------------*/
@@ -109,6 +116,7 @@ import java.util.EmptyStackException;
    */
    public boolean isEmpty()
    { //to-complete
+    return top == null;
    }
 
   /**
@@ -121,6 +129,7 @@ import java.util.EmptyStackException;
          throw new EmptyStackException();
      else 
          //to-complete
+         return this.top.getData();
    } 
   
   /**
@@ -129,6 +138,10 @@ import java.util.EmptyStackException;
    */
    public T pop()
    {  //to-complete
+      T data = this.top.getData();
+      this.top = this.top.getNextNode();
+      numNodes--;
+      return data;
    }
   
   /**
@@ -137,6 +150,14 @@ import java.util.EmptyStackException;
     */
     public void push(T newEntry)
     {  //to-complete
+      Node temp = new Node(newEntry, null);
+      if (this.top == null) {
+          this.top = temp;
+      } else {
+          temp.setNextNode(this.top);
+          this.top = temp;
+      }
+      numNodes++;
     } 
   
   /**
@@ -144,6 +165,8 @@ import java.util.EmptyStackException;
    */
    public void clear()
    {    //to-complete
+    this.top = null;
+    this.numNodes = 0;
    }
 
   /**
@@ -151,5 +174,17 @@ import java.util.EmptyStackException;
    */
    public void display()
    {  //to-complete
-   } 
+    Node temp = top;
+    if (!isEmpty()) {
+      while (temp != null) {
+        System.out.println(temp.getData().toString());
+        temp = temp.getNextNode();
+      }
+    }
+   }
+  @Override
+  public boolean isFull() {
+    // TODO Auto-generated method stub
+    return false;
+  } 
  }
