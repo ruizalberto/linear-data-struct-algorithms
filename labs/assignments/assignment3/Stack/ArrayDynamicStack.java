@@ -75,7 +75,7 @@ import java.util.NoSuchElementException;
    */
    public boolean isEmpty()
    { //to-complete
-    if (getStack().size()==0){
+    if (size()==0){
       return true;
     }
     return false;
@@ -88,7 +88,7 @@ import java.util.NoSuchElementException;
    */
    public int size()
    {  //to-complete
-    return getStack().size();
+    return this.stack.size();
    } 
   
   /**
@@ -101,7 +101,7 @@ import java.util.NoSuchElementException;
          throw new NoSuchElementException("Stack is empty, no peek element");
       else
           //to-complete
-          return getStack().get(size()-1);
+          return this.stack.get(size()-1);
    } 
   
   /**
@@ -115,7 +115,7 @@ import java.util.NoSuchElementException;
         throw new NoSuchElementException("Stack is empty, cannot pop");
       else {
         //to-complete
-        return getStack().remove(size()-1);
+        return this.stack.remove(size()-1);
       }
    }
   
@@ -125,7 +125,7 @@ import java.util.NoSuchElementException;
     */
     public void push(T newEntry)
     { //to-complete
-      getStack().add(getStack().size(), newEntry);
+      this.stack.add(newEntry);
     } 
   
   /**
@@ -145,7 +145,7 @@ import java.util.NoSuchElementException;
    */
    public void display()
    {  //to-complete
-    for (T element: getStack()){
+    for (T element: this.stack){
       System.out.println(element.toString());
     }
    }
