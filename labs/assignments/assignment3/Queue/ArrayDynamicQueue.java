@@ -39,8 +39,7 @@ import java.util.NoSuchElementException;
    public ArrayDynamicQueue(int initCapacity)
    {   //to-complete
     this.queue = new ArrayList<>(initCapacity);
-    this.front = 0;
-    this.rear = initCapacity-1;
+    this.front = this.rear = 0;
    }
 
 /* =============================================================================
@@ -130,6 +129,7 @@ import java.util.NoSuchElementException;
         throw new NoSuchElementException("Queue is empty, cannot remove");
       else
         //to-complete
+        this.rear--;
         return this.queue.remove(front);
    }
   
@@ -139,6 +139,7 @@ import java.util.NoSuchElementException;
    */
    public void enqueue(T newEntry)
    {  //to-complete
+    this.rear++;
     this.queue.add(newEntry);
    } 
   
@@ -152,6 +153,7 @@ import java.util.NoSuchElementException;
       else
          //to-complete
          this.queue = null;
+         this.rear = this.front = 0;
    }
 
   /**

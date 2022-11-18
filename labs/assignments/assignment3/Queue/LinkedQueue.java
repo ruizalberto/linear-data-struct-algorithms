@@ -172,8 +172,7 @@
    */
    public void clear()
    {  //to-complete
-    this.firstNode = null;
-    this.lastNode = null;
+    this.firstNode = this.lastNode = null;
     this.numNodes = 0;
    }
 
@@ -194,6 +193,5 @@
         System.out.println(temp.getData().toString());
       }
     }
-    
    } 
  }
