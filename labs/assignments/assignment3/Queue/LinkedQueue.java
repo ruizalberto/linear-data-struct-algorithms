@@ -87,6 +87,8 @@
   */
   public LinkedQueue()
   {   //to-complete
+    this.firstNode = this.lastNode = null;
+    this.numNodes = 0;
   }
 
 /* =============================================================================
@@ -100,6 +102,13 @@
    */
    public int size()
    {  //to-complete
+    Node temp = this.firstNode;
+    int counter = 0;
+    while (temp.next != this.lastNode){
+      counter++;
+      temp = temp.next;
+    }
+    return counter;
    } 
 /* ------------------- Other methods -----------------------------------------*/
   
@@ -109,6 +118,7 @@
    */
    public boolean isEmpty()
    { //to-complete
+    return this.numNodes == 0;
    }
   
   /**
@@ -122,6 +132,7 @@
          throw new EmptyQueueException("The queue is empty, cannot get front");
        else
         //to-complete
+        return this.firstNode.getData();
      }
      catch (EmptyQueueException eqe)
      {  eqe.printStackTrace();
@@ -135,6 +146,10 @@
    */
    public T dequeue()
    {  //to-complete
+    Node temp = this.firstNode;
+    this.firstNode = temp.next;
+    this.numNodes--;
+    return temp.getData();
    }
   
   /**
@@ -142,7 +157,14 @@
    * @param newEntry An object to be added
    */
    public void enqueue(T newEntry)
-   { //to-complete 
+   { //to-complete
+    Node temp = new Node(newEntry, null);
+    if (this.lastNode == null) {
+        this.firstNode = this.lastNode = temp;
+    }
+    this.lastNode.next = temp;
+    this.lastNode = temp;
+    this.numNodes++;
    } 
   
   /**
@@ -150,6 +172,9 @@
    */
    public void clear()
    {  //to-complete
+    this.firstNode = null;
+    this.lastNode = null;
+    this.numNodes = 0;
    }
 
   /**
@@ -157,5 +182,18 @@
    */
    public void display()
    {  //to-complete
+    if (!isEmpty()){
+      Node temp = this.firstNode;
+      if (temp == this.lastNode){
+        System.out.println(temp.getData().toString());
+      } else {
+        while(temp.next != null){
+          System.out.println(temp.getData().toString());
+          temp = temp.next;
+        }
+        System.out.println(temp.getData().toString());
+      }
+    }
+    
    } 
  }
