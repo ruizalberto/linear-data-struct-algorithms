@@ -146,10 +146,4 @@ import java.util.NoSuchElementException;
       System.out.println(element.toString());
     }
    }
-
-  @Override
-  public boolean isFull() {
-    // TODO Auto-generated method stub
-    return false;
-  } 
  }

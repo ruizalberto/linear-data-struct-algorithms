@@ -182,9 +182,4 @@ import java.util.EmptyStackException;
       }
     }
    }
-  @Override
-  public boolean isFull() {
-    // TODO Auto-generated method stub
-    return false;
-  } 
  }
