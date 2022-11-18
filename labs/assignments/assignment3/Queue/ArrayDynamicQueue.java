@@ -29,9 +29,7 @@ import java.util.NoSuchElementException;
   */
   public ArrayDynamicQueue()
   {   //to-complete
-    this.queue = null;
-    this.front = 0;
-    this.rear = 0;
+    this.queue = new ArrayList<>();
   }
 
   /**
@@ -40,6 +38,9 @@ import java.util.NoSuchElementException;
    */
    public ArrayDynamicQueue(int initCapacity)
    {   //to-complete
+    this.queue = new ArrayList<>(initCapacity);
+    this.front = 0;
+    this.rear = initCapacity-1;
    }
 
 /* =============================================================================
@@ -53,6 +54,7 @@ import java.util.NoSuchElementException;
     */
     public ArrayList<T> getQueue()
     {   //to-complete
+      return this.queue;
     }
    
    /**
@@ -61,6 +63,7 @@ import java.util.NoSuchElementException;
     */
     public int getFrontPos()
     {  //to-complete
+      return this.front;
     }  
 
   /**
@@ -69,6 +72,7 @@ import java.util.NoSuchElementException;
    */
    public int getRearPos()
    {    //to-complete
+    return this.rear;
    }
 
 /* -------------------- Setters ---------------------------------------------*/
@@ -78,6 +82,7 @@ import java.util.NoSuchElementException;
     */
     public void setQueue(ArrayList<T> queue)
     {   //to-complete
+      this.queue = queue;
     }    
 /* ------------------- Other methods -----------------------------------------*/
   
@@ -87,6 +92,10 @@ import java.util.NoSuchElementException;
    */
    public boolean isEmpty()
    { //to-complete
+    if (this.queue == null || this.queue.size() == 0){
+      return true;
+    }
+    return false;
    }
 
   /**
@@ -95,6 +104,7 @@ import java.util.NoSuchElementException;
    */
    public int size()
    {  //to-complete
+    return this.queue.size();
    } 
   
   /**
@@ -107,6 +117,7 @@ import java.util.NoSuchElementException;
          throw new NoSuchElementException("Queue is empty, no front element");
       else
          //to-complete
+         return this.queue.get(front);
    } 
   
   /**
@@ -119,6 +130,7 @@ import java.util.NoSuchElementException;
         throw new NoSuchElementException("Queue is empty, cannot remove");
       else
         //to-complete
+        return this.queue.remove(front);
    }
   
   /**
@@ -127,6 +139,7 @@ import java.util.NoSuchElementException;
    */
    public void enqueue(T newEntry)
    {  //to-complete
+    this.queue.add(newEntry);
    } 
   
   /**
@@ -138,6 +151,7 @@ import java.util.NoSuchElementException;
          throw new NoSuchElementException("Cannot clear an empty queue");
       else
          //to-complete
+         this.queue = null;
    }
 
   /**
@@ -145,5 +159,8 @@ import java.util.NoSuchElementException;
    */
    public void display()
    {  //to-complete
+    for (T element: this.queue){
+      System.out.println(element.toString());
+    }
    } 
  }
