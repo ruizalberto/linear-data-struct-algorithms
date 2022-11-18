@@ -16,7 +16,6 @@ import java.util.NoSuchElementException;
 */
     //An array of stack entries
     private ArrayList<T> stack;
-    private int capacity;
 
     //default capacity
     private static final int DEFAULT_CAPACITY = 50;
@@ -30,8 +29,7 @@ import java.util.NoSuchElementException;
   */
   public ArrayDynamicStack()
   {  //to-complete
-    this.stack = new ArrayList<>();
-    this.capacity = DEFAULT_CAPACITY;
+    this.stack = new ArrayList<>(DEFAULT_CAPACITY);
   }
 
   /**
@@ -40,8 +38,7 @@ import java.util.NoSuchElementException;
    */
    public ArrayDynamicStack(int initCapacity)
    {  //to-complete
-    this.stack = new ArrayList<>();
-    this.capacity = initCapacity;
+    this.stack = new ArrayList<>(initCapacity);
    }
 
 /* =============================================================================

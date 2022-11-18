@@ -29,6 +29,9 @@ import java.util.NoSuchElementException;
   */
   public ArrayDynamicQueue()
   {   //to-complete
+    this.queue = null;
+    this.front = 0;
+    this.rear = 0;
   }
 
   /**
