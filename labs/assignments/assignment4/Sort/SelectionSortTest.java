@@ -15,6 +15,18 @@ class SelectionSortTest {
    */
    private static void selectionSort(int[] data)
    {  //to-complete
+    int n = data.length;
+ 
+    for (int i = 0; i < n-1; i++){
+        int minElem = i;
+        for (int j = i+1; j < n; j++){
+          if (data[j] < data[minElem]){
+            minElem = j;
+          }
+        }
+        printPass(data, i+1, minElem);
+        swap(data, minElem, i);
+    }
    }
 
   /**
