@@ -26,6 +26,7 @@ import java.util.Scanner;
         //Task: which method should be used in Arrays class to make sure data in a sorted 
         //order
         //to-complete
+        Arrays.sort(arrayInt);
         isSorted(arrayInt);
 
         //Task: display array as below: for example [-1, 10, 40, 30]
@@ -75,7 +76,7 @@ import java.util.Scanner;
 
       for (int i = left; i<right; i++){
         if (i == mid){
-          System.out.print(data[i]+"(mid) ");
+          System.out.print(data[i]+"* ");
         } else {
           System.out.print(data[i]+ " ");
         }
