@@ -68,7 +68,7 @@ import java.util.Scanner;
    if (high >= low && low <= data.length - 1) {
  
       int mid = low + (high - low) / 2;
-      remainingElements(data, low, high);
+      System.out.println(remainingElements(data, low, high));
 
       if (data[mid] == searchKey){
          return mid;
