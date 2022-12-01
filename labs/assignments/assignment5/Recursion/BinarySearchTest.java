@@ -65,6 +65,23 @@ import java.util.Scanner;
  */
  private static int binarySearch(int[] data, int low, int high, int searchKey)
  {   //to-complete
+   if (high >= low && low <= data.length - 1) {
+ 
+      int mid = low + (high - low) / 2;
+      remainingElements(data, low, high);
+
+      if (data[mid] == searchKey){
+         return mid;
+      }
+      if (data[mid] > searchKey){
+         return binarySearch(data, low, mid - 1, searchKey);
+      }
+      return binarySearch(data, mid + 1, high, searchKey);
+  }
+
+  // We reach here when element is not present in
+  // array
+  return -1;
  }
 
  /**
