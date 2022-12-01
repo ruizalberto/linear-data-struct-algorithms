@@ -47,6 +47,7 @@ import java.util.Scanner;
               System.out.printf("%d was found in position %d%n%n", searchInt, position);
         }
         while (searchInt >= 0);
+        input.close();
      }
 /* =============================================================================
                            HELPER METHODS 
