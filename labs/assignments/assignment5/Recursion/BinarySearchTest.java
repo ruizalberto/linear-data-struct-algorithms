@@ -34,7 +34,7 @@ import java.util.Scanner;
         //search
         int searchInt;
         do
-        {   System.out.print("Please enter a search key (-1 or quit): ");
+        {   System.out.print("Please enter a search key (-1 to quit): ");
             searchInt = input.nextInt();
 
             //perform a linear search
