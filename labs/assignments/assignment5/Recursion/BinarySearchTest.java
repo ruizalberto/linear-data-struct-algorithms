@@ -78,9 +78,6 @@ import java.util.Scanner;
       }
       return binarySearch(data, mid + 1, high, searchKey);
   }
-
-  // We reach here when element is not present in
-  // array
   return -1;
  }
 
