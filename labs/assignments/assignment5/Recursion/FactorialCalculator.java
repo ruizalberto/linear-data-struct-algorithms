@@ -24,6 +24,12 @@
      */
      private static long iterativeFac(long number)
      {  //to-complete
+        long result = 1;
+        while (number > 1) {
+            result *= number;
+            number -= 1;
+        }
+        return result;
      }
 
     /**
@@ -34,5 +40,10 @@
      */
      private static long recursiveFac(long number)
      {   //to-complete
+        if (number <= 1){
+            return 1;
+        } else {
+            return number * recursiveFac(number-1);
+        }
      }
  }
